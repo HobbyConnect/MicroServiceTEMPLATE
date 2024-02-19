@@ -11,6 +11,11 @@ import net.devh.boot.grpc.server.service.GrpcService;
 @GrpcService
 public class NameTemplateService extends MyServiceGrpc.MyServiceImplBase {
 
+    /*
+    Doc:
+        https://yidongnan.github.io/grpc-spring-boot-starter/en/server/getting-started.html
+     */
+
 
     @Override
     public void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver) {
