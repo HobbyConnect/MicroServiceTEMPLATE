@@ -1,14 +1,36 @@
+
+buildscript {
+
+    ext {
+        springBootVersion = "3.2.1"
+        springDepManager  = "1.1.4"
+
+        protobufVersion = '3.23.4'
+        protobufPluginVersion = '0.8.18'
+        grpcVersion = '1.61.1'
+
+
+    }
+
+}
+
+
+
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.1'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'idea'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDepManager}"
+    id 'com.google.protobuf' version "${protobufPluginVersion}"
+
 }
 
 group = 'com'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '21'
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 configurations {
@@ -21,16 +43,37 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+
+
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+    compileOnly 'jakarta.annotation:jakarta.annotation-api:1.3.5'
+
+
+
+    //Test-Impl
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 
 
+
 }
+
+apply from: 'gradle/generate_proto.gradle'
+
+
+
+
+
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
