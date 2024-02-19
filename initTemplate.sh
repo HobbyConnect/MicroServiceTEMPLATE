@@ -37,6 +37,13 @@ mv "src/main/java/com/name_template" "src/main/java/com/${packageName}"
 
 
 
-#git Process
+# git Process
 
 git add *
+
+
+# generate docs
+
+
+
+# remove this file...
