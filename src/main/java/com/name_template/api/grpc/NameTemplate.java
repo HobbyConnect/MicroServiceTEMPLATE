@@ -8,15 +8,15 @@ import net.devh.boot.grpc.server.service.GrpcService;
 
 
 @GrpcService
-public class NameTemplateService extends MyServiceGrpc.MyServiceImplBase {
+public class NameTemplate extends NameTemplateGrpc.NameTemplateImplBase {
 
     /*
-        Implement here all endpoint which added in the NameTemplateService.proto
+        Implement here all endpoint which added in the NameTemplate.proto
      */
 
     private GrpcRequestHandler grpcRequestHandler;
 
-    public NameTemplateService(GrpcRequestHandler grpcRequestHandler){
+    public NameTemplate(GrpcRequestHandler grpcRequestHandler){
         this.grpcRequestHandler = grpcRequestHandler;
     };
 
