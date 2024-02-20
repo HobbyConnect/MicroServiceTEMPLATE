@@ -5,7 +5,7 @@ package com.name_template.api.grpc;
 option java_multiple_files = true;
 option java_package = "net.devh.boot.grpc.examples.lib";
 
-service MyService {
+service NameTemplate {
   rpc SayHello (HelloRequest) returns (HelloResponse) {
   }
 
