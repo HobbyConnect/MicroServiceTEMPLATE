@@ -71,7 +71,7 @@ find src/ -depth -type d -name "*${old_packageName}*" -exec bash -c 'mv "$1" "$(
 
 
 #Rename gradle Project
-old_gradleName="SessionService"
+old_gradleName="MicroServiceTEMPLATEGradle"
 new_gradleName="${serviceName}"
 
 find . -type f -exec sed -i "s/$old_gradleName/$new_gradleName/g" {} +
@@ -80,9 +80,10 @@ cd ..
 cp -r MicroServiceTEMPLATE/ ${serviceName}
 
 echo -e "${YELLOW}Info: Remove old Stuff${NC}"
-#rm MicroServiceTEMPLATE/ -rf
+rm MicroServiceTEMPLATE/ -rf
 cd ${serviceName}
-#rm utils.sh
+rm utils.sh
+rm README.md
 
 
 echo -e "${YELLOW}Info: Refresh new project${NC}"
