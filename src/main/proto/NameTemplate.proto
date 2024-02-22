@@ -27,9 +27,10 @@ message HealthCheckRequest {}
 
 message HealthCheckResponse {
   enum Status {
-    HEALTHY = 0;
-    UNHEALTHY = 1;
-    UNKNOWN = 2;
+    EMPTY = 0;
+    HEALTHY = 1;
+    UNHEALTHY = 2;
+    UNKNOWN = 3;
   }
 
   Status status = 1;

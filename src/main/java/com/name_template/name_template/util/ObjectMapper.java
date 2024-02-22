@@ -1,5 +1,6 @@
 package com.name_template.name_template.util;
 
+import com.name_template.name_template.healt.HealthStatus;
 import net.devh.boot.grpc.examples.lib.HealthCheckResponse;
 import net.devh.boot.grpc.examples.lib.HelloResponse;
 import org.mapstruct.Mapper;
@@ -17,7 +18,6 @@ public interface ObjectMapper {
 
     /* ignore grpc-internals */ @Mapping(target = "mergeFrom", ignore = true)@Mapping(target = "clearField", ignore = true) @Mapping(target = "clearOneof", ignore = true)@Mapping(target = "unknownFields", ignore = true)@Mapping(target = "mergeUnknownFields", ignore = true)@Mapping(target = "allFields", ignore = true)
     @Mapping(target = "statusValue", ignore = true)
-    HealthCheckResponse convert(HealthCheckResponse.Status status);
-
+    HealthCheckResponse convert(HealthStatus status);
 
 }
