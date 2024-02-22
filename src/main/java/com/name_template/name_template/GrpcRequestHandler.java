@@ -1,5 +1,7 @@
 package com.name_template.name_template;
 
+import com.name_template.name_template.healt.HealthManager;
+import com.name_template.name_template.healt.HealthStatus;
 import com.name_template.name_template.util.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.examples.lib.HealthCheckResponse;
@@ -12,9 +14,14 @@ import org.springframework.stereotype.Service;
 public class GrpcRequestHandler {
 
     private ObjectMapper objectMapper;
+    private HealthManager healthManager;
 
-    public GrpcRequestHandler(ObjectMapper objectMapper){
-        this.objectMapper = objectMapper;
+    public GrpcRequestHandler(
+            ObjectMapper  objectMapper,
+            HealthManager healthManager
+    ){
+        this.objectMapper  = objectMapper;
+        this.healthManager = healthManager;
     }
 
     public HelloResponse hello(HelloRequest request){
@@ -28,17 +35,8 @@ public class GrpcRequestHandler {
 
 
     public HealthCheckResponse health(){
-        HealthCheckResponse.Status status = performHealthCheck();
+        HealthStatus status = healthManager.getStatus();
         return objectMapper.convert(status);
     }
-
-    private HealthCheckResponse.Status performHealthCheck() {
-        /*
-            Implement your health check status here
-
-         */
-        return HealthCheckResponse.Status.HEALTHY;
-    }
-
 
 }
